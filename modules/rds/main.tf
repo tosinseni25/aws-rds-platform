@@ -10,7 +10,7 @@ resource "aws_db_subnet_group" "main" {
 resource "aws_rds_cluster" "main" {
   cluster_identifier      = "${var.project_name}-${var.environment}-cluster"
   engine                  = "aurora-postgresql"
-  engine_version          = "15.4"
+  engine_version          = "16.6"
   database_name           = "appdb"
   master_username         = "dbadmin"
   master_password         = var.db_password
@@ -38,7 +38,7 @@ resource "aws_rds_cluster_instance" "main" {
   monitoring_interval = 60
   monitoring_role_arn = var.monitoring_role_arn
 
-  performance_insights_enabled = true
+  performance_insights_enabled    = true
   performance_insights_kms_key_id = var.kms_key_arn
 
   tags = {
